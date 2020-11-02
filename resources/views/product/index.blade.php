@@ -12,7 +12,7 @@
         <th>price</th>
         <th>discount</th>
         <th>status</th>
-        <th>action</th>
+        <th style="width:15%">action</th>
     </tr>
 </thead>
 <tbody>
@@ -26,12 +26,18 @@
             <td>{{$value->discount}}</td>
             <td>{{$value->status?"Show":"Hidden"}}</td>
             <td style="white-space:nowrap;">
-                <a class="btn btn-xs btn-info" href="/product/{{$value->id}}/edit">Edit</a>
-                <form action="/product/{{$value->id}}" method="post">
-                    @csrf
-                    <input type="hidden" name="_method" value="delete"/>
-                    <button class="btn btn-xs btn-danger" style="float:right">delete</button>
-                </form>
+                <div class="row">
+                    <div class="col-md-6">
+                         <a class="btn btn-xs btn-info" href="/product/{{$value->id}}/edit">Edit</a>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="/product/{{$value->id}}" method="post">
+                            @csrf
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button class="btn btn-xs btn-danger">delete</button>
+                        </form>
+                    </div>
+                </div>
             </td>
         </tr>
     @endforeach
