@@ -5,7 +5,7 @@
 
 <div class="container">
     <h1>Create Product</h1>
-    <form action="/product" method="post">
+    <form action="/product" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-12">
@@ -28,6 +28,11 @@
                 <label>Status</label>
                 <input type="checkbox" name="status"/>
             </div>
+            <div class="col-md-12">
+                <label>Image</label>
+                <input type="file" name="image"/>
+            </div>
+            
             <div class="col-md-12">
                 <button class="btn btn-primary">Save</button>
             </div>

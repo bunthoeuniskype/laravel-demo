@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Image;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,13 @@ class ProductController extends Controller
         $data->price       = $req->price;
         $data->discount    = $req->discount;
         $data->status      = $req->status?true:false;
+        if($req->hasFile("image")){
+           $file = $req->image;
+           $file_name = time()."-".$file->getClientOriginalName();
+            Image::make($file)->save(storage_path("/app/public/".$file_name));
+          $data->image = $file_name;
+        }
+         
         if($data->save())
             return redirect('product');
         return redirect()->back();
@@ -45,6 +53,12 @@ class ProductController extends Controller
         $data->price       = $req->price;
         $data->discount    = $req->discount;
         $data->status      = $req->status?true:false;
+        if($req->hasFile("image")){
+            $file = $req->image;
+            $file_name = time()."-".$file->getClientOriginalName();
+             Image::make($file)->save(storage_path("/app/public/".$file_name));
+           $data->image = $file_name;
+         }
         if($data->save())
             return redirect('product');
         return redirect()->back();

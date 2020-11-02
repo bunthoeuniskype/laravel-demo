@@ -7,6 +7,7 @@
 <thead>
     <tr>
         <th>id</th>
+        <th>Image</th>
         <th>title</th>
         <th>description</th>
         <th>price</th>
@@ -20,6 +21,9 @@
     @foreach($data as $key => $value)
         <tr>
             <td>{{++$key}}</td>
+            <td>
+                <img src="/storage/{{$value->image}}" style="max-height:50px"/>
+            </td>
             <td>{{$value->title}}</td>
             <td>{{$value->description}}</td>
             <td>{{$value->price}}</td>
