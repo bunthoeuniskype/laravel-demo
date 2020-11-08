@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Role;
+
+class RoleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $owner = new Role();
+        $owner->name         = 'owner';
+        $owner->display_name = 'Project Owner'; // optional
+        $owner->description  = 'User is the owner of a given project'; // optional
+        $owner->save();
+
+        $owner = new Role();
+        $owner->name         = 'user';
+        $owner->display_name = 'user can read only'; // optional
+        $owner->description  = 'User is the owner of a given view list'; // optional
+        $owner->save();
+
+
+        $admin = new Role();
+        $admin->name         = 'admin';
+        $admin->display_name = 'User Administrator'; // optional
+        $admin->description  = 'User is allowed to manage and edit other users'; // optional
+        $admin->save();
+    }
+}

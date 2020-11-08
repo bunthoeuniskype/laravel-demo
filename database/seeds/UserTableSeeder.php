@@ -15,8 +15,14 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
+            'name' => "user",
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => "admin",
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
         ]);
     }

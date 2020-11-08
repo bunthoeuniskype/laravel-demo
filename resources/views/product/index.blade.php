@@ -2,7 +2,9 @@
 
 @section("content")
 <h1>List Products</h1>
-<a  class="btn btn-primary pull-right" style="float:right" href="/product/create">Create Product</a>
+@if(Entrust::can("create-product"))
+    <a  class="btn btn-primary pull-right" style="float:right" href="/product/create">Create Product</a>
+@endif
 <table class="table table-bordered">
 <thead>
     <tr>
@@ -31,9 +33,12 @@
             <td>{{$value->status?"Show":"Hidden"}}</td>
             <td style="white-space:nowrap;">
                 <div class="row">
+                @if(Entrust::can("edit-product"))
                     <div class="col-md-6">
                          <a class="btn btn-xs btn-info" href="/product/{{$value->id}}/edit">Edit</a>
                     </div>
+                @endif
+                @if(Entrust::can("delete-product"))
                     <div class="col-md-6">
                         <form action="/product/{{$value->id}}" method="post">
                             @csrf
@@ -41,6 +46,7 @@
                             <button class="btn btn-xs btn-danger">delete</button>
                         </form>
                     </div>
+                @endif
                 </div>
             </td>
         </tr>
