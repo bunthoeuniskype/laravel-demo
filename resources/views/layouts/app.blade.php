@@ -39,6 +39,16 @@
                                     <a href="/product" class="nav-link">Product</a>
                                 </li>
                             @endif
+                            @if(Entrust::can("list-user"))
+                                <li class="nav-item">
+                                    <a href="/user" class="nav-link">User Management</a>
+                                </li>
+                            @endif
+                            @if(Entrust::can("list-role"))
+                                <li class="nav-item">
+                                    <a href="/role" class="nav-link">Roles</a>
+                                </li>
+                            @endif
                         @endif
                     </ul>
 
